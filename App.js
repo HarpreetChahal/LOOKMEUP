@@ -2,8 +2,22 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TouchableOpacity, SafeAreaView, Button } from 'react-native';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-export default function App() {
+const Stack = createNativeStackNavigator();
+
+const App = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen component={Main} name="Main" options={{headerShown:false}}/>
+        <Stack.Screen component={Home} name="Home"/>
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+const Main =({navigation}) => {
   return (
 
     <View style={styles.container}>
@@ -16,7 +30,7 @@ export default function App() {
       <TouchableOpacity> 
       <View style={styles.buttons}>
         <View style={styles.login}>
-          <Button  color="#BABABA" title="Sign Up" />
+          <Button  color="#BABABA" title="Sign Up" onPress={() => navigation.navigate('Home')}/>
         </View>
         <View style={styles.signup}>
           <Button color="#3491ff" title="Log In" />
@@ -32,6 +46,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor:'#ffffff',
     // backgroundColor: '#fff',
     // alignItems: 'center',
     // justifyContent: 'center',
@@ -71,3 +86,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 });
+const Home = () =>{
+  return(
+    <View style={{flex:1, justifyContent:'center',alignItems:'center'}}>
+      <Text>Home Screen</Text>
+    </View>
+  )
+}
+export default App;
