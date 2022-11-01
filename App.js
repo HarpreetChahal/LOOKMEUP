@@ -1,96 +1,23 @@
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TouchableOpacity, SafeAreaView, Button } from 'react-native';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './screens/HomeScreen';
+import OnboardingScreen from './screens/OnboardingScreen';
+import AuthStack from './navigation/AuthStack';
+import AppStack from './navigation/AppStack';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen component={Main} name="Main" options={{headerShown:false}}/>
-        <Stack.Screen component={Home} name="Home"/>
-      </Stack.Navigator>
+     <AuthStack/>
+     {/* <AppStack/> */}
     </NavigationContainer>
   );
-}
-const Main =({navigation}) => {
-  return (
-
-    <View style={styles.container}>
-      <View style={styles.header}>
-        {/* <Text>Open up App.js to start working on your app!</Text> */}
-        <Image style={styles.logo} source={require('../LOOKMEUP/assets/logo1.png')} />
-        <Text style={styles.mainText}>Explore the best experience based on your interest.</Text>
-        <Image style={styles.logo2} source={require('../LOOKMEUP/assets/main_icon.png')} />
-      </View>
-      <TouchableOpacity> 
-      <View style={styles.buttons}>
-        <View style={styles.login}>
-          <Button  color="#BABABA" title="Sign Up" onPress={() => navigation.navigate('Home')}/>
-        </View>
-        <View style={styles.signup}>
-          <Button color="#3491ff" title="Log In" />
-        </View>
-        {/* <StatusBar style="auto" /> */}
-      </View>
-      </TouchableOpacity>
-    </View>
-
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor:'#ffffff',
-    // backgroundColor: '#fff',
-    // alignItems: 'center',
-    // justifyContent: 'center',
-  },
-  logo: {
-    height: 200,
-    width: 300,
-  },
-  logo2: {
-   // marginTop:20,
-    marginLeft:130,
-    height: 289,
-    width: 166,
-  },
-  header: {
-    //backgroundColor: 'skyblue',
-    flex: 1,
-    marginTop: 25,
-    //height: 300, 
-    //width: '100%',
-    alignItems:'center',
-  },
-  mainText:{
-    color: '#BABABA',
-    padding: 10,
-    fontSize: 18,
-  },
-  buttons: {
-    //width: 100,
-    padding: 10,
-   // backgroundColor: 'red',
-  },
-  login: {
-    marginBottom: 10,
-  },
-  signup: {
-    marginBottom: 10,
-  },
-});
-const Home = () =>{
-  return(
-    <View style={{flex:1, justifyContent:'center',alignItems:'center'}}>
-      <Text>Home Screen</Text>
-    </View>
-  )
 }
 export default App;
