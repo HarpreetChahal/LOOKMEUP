@@ -11,17 +11,17 @@ const OnboardingScreen = ({navigation}) => {
             <Text style={styles.mainText}>Explore the best experience based on your interest.</Text>
             <Image style={styles.logo2} source={require('../assets/main_icon.png')} />
           </View>
-          <TouchableOpacity> 
+          {/* <TouchableOpacity>  */}
           <View style={styles.buttons}>
-            <View style={styles.login}>
-              <Button  color="#BABABA" title="Sign Up" onPress={() => navigation.navigate('RegisterScreen', { screen: 'RegisterScreen' })}/>
-            </View>
-            <View style={styles.signup}>
-              <Button color="#3491ff" title="Log In" onPress={() => navigation.navigate('LoginScreen', { screen: 'LoginScreen' })}/>
-            </View>
+            <TouchableOpacity style={styles.login} onPress={() => navigation.navigate('RegisterScreen', { screen: 'RegisterScreen' })}>
+            <Text style={styles.loginText}>Join Now</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.signup} onPress={() => navigation.navigate('LoginScreen', { screen: 'LoginScreen' })}>
+              <Text style={styles.signupText}>Sign In</Text>
+            </TouchableOpacity>
             {/* <StatusBar style="auto" /> */}
           </View>
-          </TouchableOpacity>
+          {/* </TouchableOpacity> */}
         </View>
     
       );
@@ -33,7 +33,8 @@ const OnboardingScreen = ({navigation}) => {
         backgroundColor:'#ffffff',
         // backgroundColor: '#fff',
         // alignItems: 'center',
-        // justifyContent: 'center',
+        justifyContent: 'center',
+        marginTop:40,
       },
       logo: {
         height: 200,
@@ -65,10 +66,30 @@ const OnboardingScreen = ({navigation}) => {
       },
       login: {
         marginBottom: 10,
-      },
+        backgroundColor: "#3491ff",
+        borderRadius: 10,
+        padding: 10,
+        //height:40,
+        //alignContent:'center',
+        alignItems: 'center',
+    },
+    loginText: {
+        color: '#ffffff',
+        fontSize: 16,
+    },
       signup: {
         marginBottom: 10,
-      },
+        backgroundColor: "#BABABA",
+        borderRadius: 10,
+        padding: 10,
+        //height:40,
+        //alignContent:'center',
+        alignItems: 'center',
+    },
+    signupText: {
+        color: '#ffffff',
+        fontSize: 16,
+    },
     });
     // const LoginScreen = () => {
     //     return(

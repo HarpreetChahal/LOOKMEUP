@@ -2,49 +2,62 @@ import React from 'react'
 import { View, Text, StyleSheet, Image, TouchableOpacity, Button, TextInput } from 'react-native'
 
 
-const RegisterScreen = () => {
+const RegisterScreen = ({navigation}) => {
     return (
-
-
-        
         <View style={styles.container}>
             <View style={styles.header}>
                 {/* <Text>Open up App.js to start working on your app!</Text> */}
-                <Text style={styles.mainText}>Welcome back</Text>
-                <Image style={styles.logo} source={require('../assets/login.png')} />
+                <Text style={styles.mainText}>Create Account</Text>
+                <Image style={styles.logo} source={require('../assets/create_account.png')} />
             </View>
             <View style={styles.body}>
-        
-                <Text>Email</Text>
+                <Text style={{ marginBottom: 5 }}>Full Name</Text>
                 <TextInput
                     style={styles.input}
                     keyboardType="default"
                 />
-                <Text>Password</Text>
+                <Text style={styles.errors}>Name cannot be left empty</Text>
+                <Text style={{ marginBottom: 5 }}>Mobile Number</Text>
+                <TextInput
+                    style={styles.input}
+                    keyboardType="numeric"
+                />
+                <Text style={styles.errors}>Mobile Number already registered</Text>
+                <Text style={{ marginBottom: 5 }}>Email</Text>
                 <TextInput
                     style={styles.input}
                     keyboardType="default"
                 />
-                
-                <View style={styles.rememberme}>
-                <Text>Rememeber Me</Text>
-                <Text>Forgot Password</Text>
-                </View>
-           
-           
+                <Text style={styles.errors}>Email already exists</Text>
+                <Text style={{ marginBottom: 5 }}>Password</Text>
+                <TextInput
+                    style={styles.input}
+                    keyboardType="default"
+                />
+                <Text style={styles.errors}>Passwords dont match</Text>
+                <Text style={{ marginBottom: 5 }}>Confirm Password</Text>
+                <TextInput
+                    style={styles.input}
+                    keyboardType="default"
+                />
+                <Text style={styles.errors}>Passwords dont match</Text>
+
+                <Text>Agree to terms and conditions</Text>
+
+
                 <View style={styles.buttons}>
-                <TouchableOpacity>
-                    <View style={styles.signup}>
-                        <Button color="#3491ff" title="Log In" />
-                    </View>
+                <TouchableOpacity >
+                        <View style={styles.signup} >
+                            <Text style={styles.signupText} onPress={() => navigation.navigate('VerifyScreen', { screen: 'VerifyScreen' })}>Create Account</Text>
+                        </View>
                     </TouchableOpacity>
 
                     {/* <StatusBar style="auto" /> */}
-                    <Text>Don't have an account?</Text>
-                    <Text style={{ color: '#3491ff' }}>Sign Up</Text>
+                    <Text>Already have an account?</Text>
+                    <Text style={{ color: '#3491ff' }} onPress={() => navigation.navigate('LoginScreen', { screen: 'LoginScreen' })}>Sign In</Text>
 
                 </View>
-            
+
             </View>
         </View>
 
@@ -55,7 +68,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#ffffff',
-        
+        marginTop: 40,
+        flexDirection: 'column',
+        // justifyContent:'center',
+        alignItems: 'center',
+
         // backgroundColor: '#fff',
         // alignItems: 'center',
         // justifyContent: 'center',
@@ -63,34 +80,42 @@ const styles = StyleSheet.create({
     logo: {
         // marginTop:20,
         // marginLeft:130,
-        height: 167,
-        width: 179,
+        height: 158,
+        width: 120,
 
     },
     header: {
         //backgroundColor: 'skyblue',
         //flex: 1,
+        display: 'flex',
         flexDirection: 'row',
-        padding: 20,
+        //  padding: 20,
 
-        marginTop: 25,
+        //marginTop: 25,
         //height: 300, 
-        //width: '100%',
+
+        width: '100%',
+        height: '20%',
+        alignItems: 'flex-start',
         //   alignContent:'space-between',
         justifyContent: 'space-between',
+    },
+    errors: {
+       // marginTop: 5,
+        marginBottom: 5,
+        color:'red',
     },
     body: {
         //flex: 5,
         padding: 10,
-    },
-    rememberme: {
-        flexDirection:'row',
-        justifyContent:'space-between',
+        width: '100%',
+        height: '70%',
     },
     input: {
         height: 40,
         //margin: 12,
         borderWidth: 1,
+        borderRadius: 10,
         //padding: 10,
     },
 
@@ -100,7 +125,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
     buttons: {
-        marginTop:20,
+        marginTop: 10,
         //flex: 2,
         //width: 100,
         //padding: 10,
@@ -108,6 +133,16 @@ const styles = StyleSheet.create({
     },
     signup: {
         marginBottom: 10,
+        backgroundColor: "#3491ff",
+        borderRadius: 10,
+        padding: 10,
+        //height:40,
+        //alignContent:'center',
+        alignItems: 'center',
+    },
+    signupText: {
+        color: '#ffffff',
+        fontSize: 16,
     },
 });
 
