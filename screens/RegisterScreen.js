@@ -1,5 +1,13 @@
-import React from 'react'
-import { View, Text, StyleSheet, Image, TouchableOpacity, Button, TextInput } from 'react-native'
+import React from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  Button,
+  TextInput,
+} from "react-native";
 
 
 const RegisterScreen = ({navigation}) => {
@@ -61,8 +69,9 @@ const RegisterScreen = ({navigation}) => {
             </View>
         </View>
 
-    );
-}
+
+  );
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -146,4 +155,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default RegisterScreen
+export default RegisterScreen;

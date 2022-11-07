@@ -1,5 +1,14 @@
-import React from 'react'
-import { View, Text, StyleSheet, Image, TouchableOpacity, Button, TextInput } from 'react-native'
+import React from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  Button,
+  TextInput,
+} from "react-native";
+
 
 
 const LoginScreen = ({navigation}) => {
@@ -46,10 +55,29 @@ const LoginScreen = ({navigation}) => {
                 </View>
 
             </View>
-        </View>
+     
 
-    );
-}
+        <View style={styles.buttons}>
+          <TouchableOpacity>
+            <View style={styles.signup}>
+              <Button color="#3491ff" title="Log In" />
+            </View>
+          </TouchableOpacity>
+
+          {/* <StatusBar style="auto" /> */}
+          <Text>Don't have an account?</Text>
+          <Text
+            style={{ color: "#3491ff" }}
+            onPress={() =>
+              navigation.navigate("RegisterScreen", { screen: "RegisterScreen" })
+            }
+          >
+            Sign Up
+          </Text>
+        </View>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -138,4 +166,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default LoginScreen
+export default LoginScreen;
