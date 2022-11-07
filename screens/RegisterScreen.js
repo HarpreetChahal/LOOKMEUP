@@ -71,7 +71,7 @@ const RegisterScreen = ({navigation}) => {
 
 
   );
-};
+}
 
 const styles = StyleSheet.create({
     container: {
